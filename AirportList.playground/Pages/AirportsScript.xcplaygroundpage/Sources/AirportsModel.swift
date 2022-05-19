@@ -1,9 +1,11 @@
 import Foundation
 
 
-public struct Cars: Hashable, Codable {
-    public var brand: String
-    public var model: String
+public struct Airports: Hashable, Codable {
+    public var csap: String
+    public var lat: String
+    public var long: String
+
     
     // A static function because we don't want to instantiate the Structure.
     // If there's any error during opening, reading or decoding the file let's return an empty array
@@ -13,7 +15,7 @@ public struct Cars: Hashable, Codable {
         // Always handle errors properly!
         do {
             let jsonContentData = try Data(contentsOf: fileURL)
-            return try? JSONDecoder().decode([Cars].self, from: jsonContentData)
+            return try? JSONDecoder().decode([Airports].self, from: jsonContentData)
         }
         catch {
             fatalError("Error reading file: \(error.localizedDescription)", file: #file, line: #line)

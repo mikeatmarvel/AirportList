@@ -8,17 +8,17 @@ import PlaygroundSupport
 let hlat = 22
 let llong = 21
 
-let cars = Cars.loadJSONFromFile(file: "cars", withExtension: "json")
+let airports = Airports.loadJSONFromFile(file: "airports", withExtension: "json")
 
 // Let's unrwap the object and make sure isn't nil
-if let cars = cars {
+if let airports = airports {
     // Loop with high order functions (map, filter, reduce)
-    cars.map { car in
-        print(car.brand, car.model)
+    airports.map { airports in
+        print(airports.csap, airports.lat, airports.long)
     }
 }
 
-let auto = cars?.first
+let terminal = airports?.first
 
 
 let appleParkWayCoordinates = CLLocationCoordinate2DMake(22, 21)
