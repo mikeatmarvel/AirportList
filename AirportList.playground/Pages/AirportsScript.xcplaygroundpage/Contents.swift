@@ -4,13 +4,24 @@ import MapKit
 import UIKit
 import PlaygroundSupport
 
-let airport = USAirports(csap: "DTW", lat: 22, long: -10)
 
-var hlat = airport.lat
-var llong = airport.long
+let hlat = 22
+let llong = 21
+
+let cars = Cars.loadJSONFromFile(file: "cars", withExtension: "json")
+
+// Let's unrwap the object and make sure isn't nil
+if let cars = cars {
+    // Loop with high order functions (map, filter, reduce)
+    cars.map { car in
+        print(car.brand, car.model)
+    }
+}
+
+let auto = cars?.first
 
 
-let appleParkWayCoordinates = CLLocationCoordinate2DMake(hlat, llong)
+let appleParkWayCoordinates = CLLocationCoordinate2DMake(22, 21)
 
 // Now let's create a MKMapView
 let mapView = MKMapView(frame: CGRect(x:0, y:0, width:800, height:800))
