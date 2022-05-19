@@ -6,12 +6,12 @@
 import Foundation
 
 // MARK: - Welcome
-struct Welcome: Codable {
+struct Welcome: Codable, Identifiable {
     let airports: Airports
 }
 
 // MARK: - Airports
-struct Airports: Codable {
+struct Airports: Codable, Identifiable{
     let usa: [Usa]
 
     enum CodingKeys: String, CodingKey {
@@ -20,6 +20,6 @@ struct Airports: Codable {
 }
 
 // MARK: - Usa
-struct Usa: Codable {
+struct Usa: Codable, Identifiable {
     let csap, lat, long: String
 }

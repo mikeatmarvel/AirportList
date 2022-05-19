@@ -98,3 +98,23 @@ let airportLoc = findTerminal(named: terminalName)
 airportLoc?.lat
 airportLoc?.long
 print(airportLoc?.lat ?? 00)
+
+struct Welcome: Codable, Identifiable {
+    let airports: Airports
+}
+
+struct Airports: Codable, Identifiable{
+    let usa: [Usa]
+    
+    enum CodingKeys: String, CodingKey {
+        case usa = "USA"
+    }
+}
+
+struct Usa: Codable, Identifiable {
+    let csap, lat, long: String
+}
+
+let decoder = JSONDecoder()
+//let sample = try decoder.decode(airport, from: airport)
+
