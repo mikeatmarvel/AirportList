@@ -22,13 +22,27 @@ func load(file named: String) -> String? {
 }
 print(load(file: "airport")!)
 
-//var hlat =
-//var llong = airport.long
+struct Welcome: Codable, Identifiable {
+    let airports: Airports
+}
 
-//let woolooloo = Terminals()
-//woolooloo.apterminals.map { terminal in
-//    print(terminal)
-//}
+struct Airports: Codable, Identifiable{
+    let usa: [Usa]
+    
+    enum CodingKeys: String, CodingKey {
+        case usa = "USA"
+    }
+}
+
+struct Usa: Codable, Identifiable {
+    let csap, lat, long: String
+}
+
+let decoder = JSONDecoder()
+//let sample = try decoder.decode(airport, from: airport)
+
+
+
 
 let appleParkWayCoordinates = CLLocationCoordinate2DMake(51.1894444, 4.460278004)
 
@@ -55,66 +69,3 @@ mapView.addAnnotation(annotation)
 
 // Add the created mapView to our Playground Live View
 PlaygroundPage.current.liveView = mapView
-
-public class USAirports {
-    public var csap: String
-    public var lat: Double
-    public var long: Double
-    
-    init(csap: String, lat: Double, long: Double){
-        self.csap = csap
-        self.lat = lat
-        self.long = long
-    }
-}
-
-public struct Terminals {
-    public static let apterminals = [
-        USAirports(csap: "BAW", lat: 51.1894444, long: 4.460278004),
-        USAirports(csap: "BBE", lat: 50.75783338, long: 4.766999781),
-        USAirports(csap: "BBL", lat: 51.1683334, long: 5.469722003),
-        USAirports(csap: "BBR", lat: 50.9013889, long: 4.484444708),
-        USAirports(csap: "BBT", lat: 51.34083331, long: 4.504444599),
-        USAirports(csap: "BBX", lat: 49.89166662, long: 5.223888606),
-        USAirports(csap: "BCI", lat: 50.45999989, long: 4.452777654),
-        USAirports(csap: "BCV", lat: 50.57583343, long: 3.831110895),
-        USAirports(csap: "BFN", lat: 51.09033343, long: 2.652833462),
-        USAirports(csap: "YVI", lat: 54.63707507, long: 25.28780267)
-    ]
-}
-
-func findTerminal(named terminalName: String) -> USAirports? {
-    terminals.first(where: { $0.csap == terminalName })
-}
-
-let terminals = Terminals.apterminals
-
-let term = Terminals.apterminals[1]
-
-let terminalName = "BBL"
-
-let airportLoc = findTerminal(named: terminalName)
-
-airportLoc?.lat
-airportLoc?.long
-print(airportLoc?.lat ?? 00)
-
-struct Welcome: Codable, Identifiable {
-    let airports: Airports
-}
-
-struct Airports: Codable, Identifiable{
-    let usa: [Usa]
-    
-    enum CodingKeys: String, CodingKey {
-        case usa = "USA"
-    }
-}
-
-struct Usa: Codable, Identifiable {
-    let csap, lat, long: String
-}
-
-let decoder = JSONDecoder()
-//let sample = try decoder.decode(airport, from: airport)
-
