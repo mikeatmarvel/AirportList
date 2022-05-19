@@ -4,43 +4,16 @@ import MapKit
 import UIKit
 import PlaygroundSupport
 
-//let airport = USAirports(csap: "DTW", lat: 22, long: -10)
 
-let paths = Bundle.main.paths(forResourcesOfType: "swift", inDirectory: nil)
-print(paths)
+let airport = Airport.loadJSONFromFile(file: "airport", withExtension: "json")
 
-func load(file named: String) -> String? {
-    guard let fileUrl = Bundle.main.url(forResource: named, withExtension: "json") else {
-        return nil
-    }
-    
-    guard let content = try? String(contentsOf: fileUrl, encoding: .utf8) else {
-        return nil
-    }
-    
-    return content
-}
-print(load(file: "airport")!)
-
-struct Welcome: Codable, Identifiable {
-    let airports: Airports
-}
-
-struct Airports: Codable, Identifiable{
-    let usa: [Usa]
-    
-    enum CodingKeys: String, CodingKey {
-        case usa = "USA"
+// Let's unrwap the object and make sure isn't nil
+if let airport = airport {
+    // Loop with high order functions (map, filter, reduce)
+    airport.map { airport in
+        print(airport.csap, airport.lat, airport.long)
     }
 }
-
-struct Usa: Codable, Identifiable {
-    let csap, lat, long: String
-}
-
-let decoder = JSONDecoder()
-//let sample = try decoder.decode(airport, from: airport)
-
 
 
 
