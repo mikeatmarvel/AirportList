@@ -20,8 +20,11 @@ if let airports = airports {
 
 let terminal = airports?.first
 
+let termLat = 31.41513906
+let termLong = -102.3629196
 
-let appleParkWayCoordinates = CLLocationCoordinate2DMake(22, 21)
+
+let appleParkWayCoordinates = CLLocationCoordinate2DMake(termLat, termLong)
 
 // Now let's create a MKMapView
 let mapView = MKMapView(frame: CGRect(x:0, y:0, width:800, height:800))
