@@ -20,7 +20,7 @@ let airports = Airports.loadJSONFromFile(file: "airportsDouble", withExtension: 
 
 let terminal = airports?.first
 
-let termLat = Double(terminal?.lat)
+let termLat = terminal?.lat
 let termLong = terminal?.long
 
 terminal?.lat
