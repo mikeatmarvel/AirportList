@@ -2,6 +2,7 @@ import Foundation
 
 
 public struct Airports: Hashable, Codable {
+    public var AirportTerminal: String
     public var csap: String
     public var lat: String
     public var long: String

@@ -18,6 +18,7 @@ guard let terminal = airports?.first,
 }
 
 let location = terminal.csap
+let terminalName = terminal.AirportTerminal
 let appleParkWayCoordinates = CLLocationCoordinate2DMake(termLat, termLong)
 
 // Now let's create a MKMapView
@@ -37,7 +38,7 @@ mapView.setRegion(mapRegion, animated: true)
 let annotation = MKPointAnnotation()
 annotation.coordinate = appleParkWayCoordinates
 annotation.title = location
-annotation.subtitle = "One Apple Park Way, Cupertino, California."
+annotation.subtitle = terminalName
 
 mapView.addAnnotation(annotation)
 
