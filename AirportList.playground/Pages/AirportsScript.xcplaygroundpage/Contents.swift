@@ -5,26 +5,26 @@ import UIKit
 import PlaygroundSupport
 
 
-let hlat = 22
-let llong = 21
+let hlat : Double = 22
+let llong : Double = 21
 
-let airports = Airports.loadJSONFromFile(file: "airportsDouble", withExtension: "json")
+let airports = Airports.loadJSONFromFile(file: "airports", withExtension: "json")
 
 // Let's unrwap the object and make sure isn't nil
 //if let airports = airports {
-//    // Loop with high order functions (map, filter, reduce)
-//    airports.map { airports in
-//        print(airports.csap, airports.lat, airports.long)
+   //  Loop with high order functions (map, filter, reduce)
+ //  airports.map { airports in
+  //      print(airports.csap, airports.lat, airports.long)
 //    }
 //}
 
 let terminal = airports?.first
-
-let termLat = terminal?.lat
-let termLong = terminal?.long
+let location = terminal?.csap
+let termLat = Double(terminal!.lat)
+let termLong = Double(terminal!.long)
 
 terminal?.lat
-let appleParkWayCoordinates = CLLocationCoordinate2DMake(termLat, termLong)
+let appleParkWayCoordinates = CLLocationCoordinate2DMake(termLat!, termLong!)
 
 // Now let's create a MKMapView
 let mapView = MKMapView(frame: CGRect(x:0, y:0, width:800, height:800))
